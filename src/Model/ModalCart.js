@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ModelCart = new Schema({
     masinhvien: { type: String, default: '' },
-    nameUser: { type: String, default: '' },
+    idUser: { type: String, default: '' },
     idthe: { type: String, default: '' },
     ngaycap: { type: String, default: '' },
     ngayhethan: { type: String, default: '' },

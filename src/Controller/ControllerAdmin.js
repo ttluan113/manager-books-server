@@ -28,6 +28,8 @@ class ControllerAdmin {
         );
     }
     async EditCart(req, res) {
+        console.log(req.body);
+
         ModelCart.findOne({ _id: req.body.id }).then((dataCart) => {
             if (dataCart) {
                 dataCart

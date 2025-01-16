@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require('../middleware/auth');
+
 const ControllerUser = require('../Controller/ControllerUser');
 
 router.post('/api/register', ControllerUser.Register);
 router.post('/api/login', ControllerUser.Login);
 router.post('/api/handleCart', ControllerUser.handleCart);
 router.get('/api/getcart', ControllerUser.GetCart);
-router.post('/api/requestbookuser', ControllerUser.HandleBook);
+router.post('/api/requestbookuser', auth(), ControllerUser.HandleBook);
 router.get('/api/datareqbook', ControllerUser.GetBooks);
 router.post('/api/logout', ControllerUser.Logout);
 router.post('/api/changepass', ControllerUser.ChangePass);

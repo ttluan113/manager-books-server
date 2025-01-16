@@ -59,6 +59,8 @@ class ControllerUser {
     }
 
     async handleCart(req, res) {
+        const token = req.cookies.Token;
+        const decoded = jwtDecode(token);
         const newData = new ModelCart({
             masinhvien: req.body.maSinhVien,
             idthe: req.body.idthe,
@@ -66,6 +68,7 @@ class ControllerUser {
             ngaycap: moment().format('DD/MM/YYYY'),
             ngayhethan: '',
             tinhtrang: false,
+            idUser: decoded.email,
         });
         await newData.save();
         return res.status(200).json({ message: 'Gửi Yêu Cầu Thành Công !!!' });
